@@ -10,6 +10,15 @@ def create_user(email, password):
 
     return user
 
+def all_users_list():
+    """Shows list of all users."""
+
+    return User.query.all()
+
+def get_user_by_id(user_id):
+    """Return a user object by its ID"""
+    return User.query.get(user_id)
+
 def create_movie(title, overview, release_date, poster_path):
     """Create and return a new movie."""
     
@@ -18,6 +27,15 @@ def create_movie(title, overview, release_date, poster_path):
                     poster_path=poster_path)
     
     return movie
+
+def all_movies_list():
+    """Shows list of all movies."""
+
+    return Movie.query.all()
+
+def get_movie_by_id(movie_id):
+    """Return a movie object by its ID"""
+    return Movie.query.get(movie_id)
 
 def rate_a_movie(user, movie, score):
     """Create a new rating for a movie."""
