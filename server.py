@@ -34,13 +34,36 @@ def show_movie(movie_id):
 
     return render_template("movie_details.html", movie=movie)
 
-@app.route("/movies/<movie_id>", methods=["POST"])
-def rate_a_movie(movie_id):
+# This did not work but I wonder if it's possible.
+# @app.route("/movies/<movie_id>", methods=["POST"])
+# def rate_a_movie(movie_id):
+#     """Allow users to submit a rating to a movie."""
+#     if session.get('pkey', None) is None:
+#         flash ("Please log in to rate a movie.")
+#     else:
+#         user_id = session['pkey']
+#         score = int(request.form.get("rating"))
+#         user = crud.get_user_by_id(user_id)
+#         movie = crud.get_movie_by_id(movie_id)
+
+#         if score not in range(0,6):
+#             flash("Invalid entry. Try again.")
+#         else:
+#             new_rating = crud.rate_a_movie(user, movie, score)
+#             db.session.add(new_rating)
+#             db.session.commit()
+#             flash ("Rating added.")
+
+#     return redirect(request.referrer)
+
+@app.route("/rating", methods=["POST"])
+def rate_a_movie():
     """Allow users to submit a rating to a movie."""
     if session.get('pkey', None) is None:
         flash ("Please log in to rate a movie.")
     else:
         user_id = session['pkey']
+        movie_id = request.form.get("movie_id")
         score = int(request.form.get("rating"))
         user = crud.get_user_by_id(user_id)
         movie = crud.get_movie_by_id(movie_id)

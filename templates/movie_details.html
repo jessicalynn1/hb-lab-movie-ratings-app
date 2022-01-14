@@ -11,13 +11,13 @@
 
 <img src="{{ movie.poster_path }}" width=300 height=auto>
 
-<form action= "/movies/<movie_id>" method="POST">
+<form action= "/rating" method="POST">
   <h3>Rate this movie:</h3>
   <p>
      Enter a number between 0 and 5<br>
      <input type="text" name="rating">
   </p>
-
+  <input type="hidden" id="movie_id" name="movie_id" value={{movie.movie_id}}>
   <p>
    <input type="submit">
   </p>
