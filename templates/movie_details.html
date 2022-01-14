@@ -9,5 +9,18 @@
   {{ movie.overview }}
 </p>
 
-<img src="{{ movie.poster_path }}">
+<img src="{{ movie.poster_path }}" width=300 height=auto>
+
+<form action= "/movies/<movie_id>" method="POST">
+  <h3>Rate this movie:</h3>
+  <p>
+     Enter a number between 0 and 5<br>
+     <input type="text" name="rating">
+  </p>
+
+  <p>
+   <input type="submit">
+  </p>
+</form>
+
 {% endblock %}

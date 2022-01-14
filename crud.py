@@ -46,6 +46,25 @@ def rate_a_movie(user, movie, score):
 
     return rating
 
+def get_user_by_email(email):
+    """Check if user with email exists.
+        If true, return user. 
+        If false, return None."""
+    
+    return User.query.filter(User.email == email).first()
+
+def check_user_password(email, password):
+    """If password entered matches password in databse, return True.
+        If password does not  match, return False."""
+    
+    user = User.query.filter(User.email == email).first()
+
+    if user.password == password:
+        return user.user_id
+    else:
+        return False
+        
+
 
 if __name__ == '__main__':
     from server import app
